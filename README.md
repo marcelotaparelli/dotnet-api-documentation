@@ -1,6 +1,6 @@
 # dotnet-api-documentation
 
-1. Create a Web API project
+1. Create a Web API project<br><br>
 2. Install the NuGet Packages: EntityFrameworkCore, EntityFrameworkCore.Design, EntityFrameworkCore.Tools, EntityFrameworkCore.SQLServer (se for usar sql server)
 3. Crie a pasta para o DbContext e cria uma classe pra isso
 
