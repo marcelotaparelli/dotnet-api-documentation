@@ -61,4 +61,65 @@ add-migration NameOfYourMigration
 update-database
 ```
 
-8. 
+8. Criar os endpoints adicionando um Controlador API - Vazio na pasta Controllers
+```
+using Microsoft.AspNetCore.Mvc;
+
+namespace YourProject.Controllers
+{
+  [Route("api/[controller]")]
+  [ApiController]
+
+  public class YourModelController : ControllerBase
+  {
+    private readonly AppDbContext _context;
+
+    public YourModelController(DbContext context)
+    {
+      _context = context;
+    }
+
+    [HttpGet]
+    public ActionResult<List<YourModel>> GetYourModels()
+    {
+      var yourModels = _context.YourTableName.ToList();
+      return ok(yourModels);
+    }
+
+    [HttpGet]
+    public ActionResult<YourModeL> GetYourModelById(int id)
+    {
+      var produto = _context.YourTableName.Find(id);
+
+      if (produto == null)
+      {
+        return NotFound("Your message of not found.");
+      }
+
+      return Ok(produto);
+    }
+
+    
+
+  }
+}
+```
+
+
+## Para testar os endpoint você pode usar o Scalar
+
+1. Instale o NuGet Package Scalar.AspNetCore <br><br>
+
+2. Adicionar no app no Program.cs
+```
+using Scalar.AspNetCore;
+
+if (app.Environment.IsDevelopment())
+{
+  app.MapScalarApiReference();
+  app.MapOpenApi();
+}
+```
+<br><br>
+
+3. No launchSettings.json da pasta Properties veja qual a url seu projeto está rodando em "applicationUrl" e digite: url + scalar/v1
