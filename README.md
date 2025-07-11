@@ -1,7 +1,7 @@
 # dotnet-api-documentation
 
 1. Create a Web API project<br><br>
-2. Install the NuGet Packages: EntityFrameworkCore, EntityFrameworkCore.Design, EntityFrameworkCore.Tools, EntityFrameworkCore.SQLServer (se for usar sql server)
+2. Install the NuGet Packages: EntityFrameworkCore, EntityFrameworkCore.Design, EntityFrameworkCore.Tools, EntityFrameworkCore.SQLServer (se for usar sql server)<br><br>
 3. Crie a pasta para o DbContext e cria uma classe pra isso
 
 ```
@@ -17,7 +17,7 @@ namespace SeuProjeto.Data
   }
 }
 ```
-
+<br><br>
 4. Crie seu model numa pasta Models ou Entities
 ```
 namespace SeuProjeto.Models
@@ -30,7 +30,7 @@ namespace SeuProjeto.Models
   }
 }
 ```
-
+<br><br>
 5. Configure a Connection String no appsettings.json
 ```
 {
@@ -46,14 +46,14 @@ namespace SeuProjeto.Models
   }
 }
 ```
-
+<br><br>
 6. Adciione o Service do DbContext no Program.cs
 ```
 builder.Services.AddDbContext<AppDbContext>(options => {
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 })
 ```
-
+<br><br>
 7. Execute as migrações no Console do Gerenciador de Pacotes
 ```
 add-migration NameOfYourMigration
