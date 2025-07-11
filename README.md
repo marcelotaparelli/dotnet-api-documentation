@@ -87,6 +87,7 @@ namespace YourProject.Controllers
     }
 
     [HttpGet]
+    [Route("{id}")]
     public ActionResult<YourModeL> GetYourModelById(int id)
     {
       var produto = _context.YourTableName.Find(id);
@@ -99,12 +100,60 @@ namespace YourProject.Controllers
       return Ok(produto);
     }
 
-    
+    [HttpPost]
+    public ActionResult<YourModel> CreateYourModel(YourModel yourModel)
+    {
+      if(yourModel == null)
+      {
+        return BadRequest("Your message of bad request");
+      }
 
-  }
+      _context.YourTableName.Add(yourModel);
+      _context.SaveChanges();
+
+      return CreatedAtAction(nameof(GetYourModelById), new { id = yourModel.id }, yourModel);
+    }
+
+    [HttpPut]
+    [Route("{id}")]
+    public ActionResult<YourModel> UpdateYourModel(YourModel yourModel, int id)
+    {
+      var produto = _context.YourTableName.Find(id);
+
+      if(yourModel == null)
+      {
+        return NotFound("Your notfound message");
+      }
+
+      produto.Nome = yourModel.Nome;
+      ... //atualize as propriedades
+
+      _context.YourTableName.Update(produto);
+      _context.SaveChanges();
+
+      return NoContent();
+    }        
+
+    [HttpDelete]
+    public ActionResult<YourModel> DeleteYourModel(int id)
+    {
+      var produto = _context.YourTableName.Find(id);
+
+      if (produto == null)
+      {
+        return NotFound("Your notfound message.");
+      }
+
+      _context.YourTableName.Remove(produto);
+      _context.SaveChanges();
+
+      return NoContent();
+    }
+
+  }  
 }
 ```
-
+<br><br><br><br>
 
 ## Para testar os endpoint você pode usar o Scalar
 
