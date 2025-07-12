@@ -47,7 +47,7 @@ namespace SeuProjeto.Models
 }
 ```
 <br><br>
-6. Adciione o Service do DbContext no Program.cs
+6. Adicione o Service do DbContext no Program.cs
 ```
 builder.Services.AddDbContext<AppDbContext>(options => {
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -74,7 +74,7 @@ namespace YourProject.Controllers
   {
     private readonly AppDbContext _context;
 
-    public YourModelController(DbContext context)
+    public YourModelController(AppDbContext context)
     {
       _context = context;
     }
