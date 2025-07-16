@@ -172,3 +172,60 @@ if (app.Environment.IsDevelopment())
 <br><br>
 
 3. No launchSettings.json da pasta Properties veja qual a url seu projeto está rodando em "applicationUrl" e digite: url + scalar/v1
+
+<br><br><br>
+
+## Você também pode usar o arquivo .http do .net9
+
+```
+@host = http://localhost:5011
+
+### 🔍 GET - Listar todos os contatos
+GET {{host}}/api/contatos
+Accept: application/json
+
+###
+
+### 🔍 GET - Obter contato por ID
+GET {{host}}/api/contatos/1
+Accept: application/json
+
+###
+
+### ➕ POST - Criar novo contato
+POST {{host}}/api/contatos
+Content-Type: application/json
+
+{
+  "nome": "Marcelo Silva",
+  "email": "marcelo@example.com",
+  "telefone": "11999999999"
+}
+
+###
+
+### 📝 PUT - Atualizar contato por ID (substituição completa)
+PUT {{host}}/api/contatos/1
+Content-Type: application/json
+
+{
+  "nome": "Marcelo Atualizado",
+  "email": "marcelo.novo@example.com",
+  "telefone": "11888888888"
+}
+
+###
+
+### ✏️ PATCH - Atualizar parcialmente (ex: só o email)
+PATCH {{host}}/api/contatos/1
+Content-Type: application/json
+
+{
+  "email": "marcelo.atualizado@example.com"
+}
+
+###
+
+### ❌ DELETE - Remover contato por ID
+DELETE {{host}}/api/contatos/1
+```
