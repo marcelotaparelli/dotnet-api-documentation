@@ -229,3 +229,10 @@ Content-Type: application/json
 ### ❌ DELETE - Remover contato por ID
 DELETE {{host}}/api/contatos/1
 ```
+
+
+<br><br><br>
+
+## Configure o CORS
+
+https://learn.microsoft.com/pt-br/aspnet/core/security/cors?view=aspnetcore-9.0
